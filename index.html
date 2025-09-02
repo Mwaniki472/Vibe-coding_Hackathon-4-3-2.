@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards + IntaSend Payment App</title>
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Flashcards + IntaSend Payment App</h1>
+            <p>Generate flashcards from notes and manage payments</p>
+        </header>
+
+        <main>
+            <!-- Payment Section -->
+            <section class="payment-section">
+                <h2>💳 Choose Your Plan</h2>
+                <div class="plans">
+                    <div class="plan">
+                        <h3>Basic Plan</h3>
+                        <p class="price">KES 500/month</p>
+                        <ul>
+                            <li>Generate up to 50 flashcards</li>
+                            <li>Basic AI models</li>
+                            <li>Email support</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="initiatePayment('basic', 500)">
+                            Subscribe to Basic
+                        </button>
+                    </div>
+                    <div class="plan premium">
+                        <h3>Premium Plan</h3>
+                        <p class="price">KES 1000/month</p>
+                        <ul>
+                            <li>Unlimited flashcards</li>
+                            <li>Advanced AI models</li>
+                            <li>Priority support</li>
+                            <li>Export features</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="initiatePayment('premium', 1000)">
+                            Subscribe to Premium
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flashcard Generation Section -->
+            <section class="flashcard-section">
+                <h2>📚 Generate Flashcards</h2>
+                <div class="input-group">
+                    <label for="notes">Enter your notes:</label>
+                    <textarea id="notes" placeholder="Enter your study notes here..." rows="6"></textarea>
+                    <button class="btn btn-secondary" onclick="generateFlashcards()">
+                        Generate Flashcards
+                    </button>
+                </div>
+                
+                <div id="loading" class="loading hidden">
+                    <p>🤖 Generating flashcards...</p>
+                </div>
+                
+                <div id="flashcards-container" class="flashcards-container">
+                    <!-- Generated flashcards will appear here -->
+                </div>
+            </section>
+
+            <!-- Saved Flashcards Section -->
+            <section class="saved-section">
+                <h2>💾 Saved Flashcards</h2>
+                <button class="btn btn-secondary" onclick="loadSavedFlashcards()">
+                    Load Saved Flashcards
+                </button>
+                <div id="saved-flashcards" class="flashcards-container">
+                    <!-- Saved flashcards will appear here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h3>Complete Payment</h3>
+            <div id="payment-form">
+                <!-- IntaSend payment form will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/script.js"></script>
+</body>
+</html>
